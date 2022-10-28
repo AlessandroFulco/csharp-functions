@@ -21,18 +21,62 @@ Stampare la somma di tutti i numeri elevati al quadrati
 */
 
 
-int[] arrNum = { 2, 6, 7, 5, 3, 9 };
+int[] array = { 2, 6, 7, 5, 3, 9 };
 
 
 
-void StampaArrayInteri(int[] arrNum)
+void StampaArrayInteri(int[] array)
 {
     Console.Write("[");
-    for (int i = 0; i < arrNum.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        Console.Write(arrNum[i] + ", ");
+        Console.Write(array[i]);
+        if (i != array.Length - 1)
+            Console.Write(", ");
     }
     Console.Write("]");
 }
 
-StampaArrayInteri(arrNum);
+int Quadrato(int numero)
+{
+    return numero * numero;
+}
+
+int[] ElevaArrayAlQuadrato(int[] array)
+{
+    int[] nuovoArray = new int[array.Length];
+    for (int i = 0; i < array.Length; i++)
+    {
+        nuovoArray[i] = Quadrato(array[i]);
+    }
+    StampaArrayInteri(nuovoArray);
+    return nuovoArray;
+}
+
+int SommaElementiArray(int[] array)
+{
+    int somma = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        somma += array[i];
+    }
+    return somma;
+}
+
+//stampa dell'array
+StampaArrayInteri(array);
+Console.WriteLine();
+
+//stampa dell'array al quadrato
+int[] arrayQuadrato = ElevaArrayAlQuadrato(array);
+Console.WriteLine();
+
+//stampa dell'array
+StampaArrayInteri(array);
+Console.WriteLine();
+
+//somma degli elementi dell'array
+Console.WriteLine("la somma di tutti i numeri dell'array è: " + SommaElementiArray(array));
+//somma elementi array al quadrato
+Console.WriteLine("la somma di tutti i numeri dell'array è: " + SommaElementiArray(arrayQuadrato));
+
