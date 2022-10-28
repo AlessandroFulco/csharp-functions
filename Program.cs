@@ -97,30 +97,72 @@
 
 
 
-// Calcolo del fattoriale di un numero
+//// Calcolo del fattoriale di un numero
 
 
+////v1
+
+//Console.Write("Calcola il fattoriale di un numero, inserisci il numero: ");
+//int N = Convert.ToInt32(Console.ReadLine());
+
+//Console.WriteLine(Fattoriale(N));
+
+
+//int Fattoriale(int numero)
+//{
+//    int result = 0;
+//    int moltiplicazione = numero;
+
+//    int iterazioni = numero;
+
+//    for(int i = iterazioni; i > 1;)
+//    {
+//        i--;
+//        moltiplicazione = moltiplicazione * i;
+//        result = moltiplicazione;
+//    }
+
+//    return result;
+//}
+
+
+
+
+// Calcola la sequenza di fibonacci
 //v1
 
-Console.Write("Calcola il fattoriale di un numero, inserisci il numero: ");
-int N = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(Fibonacci(10));
 
-Console.WriteLine(Fattoriale(N));
-
-
-int Fattoriale(int numero)
+int Fibonacci(int numero)
 {
     int result = 0;
-    int moltiplicazione = numero;
 
-    int iterazioni = numero;
-
-    for(int i = iterazioni; i > 1;)
+    int somma1 = 0;
+    int somma2 = 0;
+   
+    if (numero == 0)
     {
-        i--;
-        moltiplicazione = moltiplicazione * i;
-        result = moltiplicazione;
+        Console.WriteLine(0);
+    } 
+    else if( numero == 1 ) 
+    {
+        Console.WriteLine(1);
+    } else
+    {
+        int appoggio = 0;
+        int inizio = 0;
+        int inizio2 = 1;
+        for (int i = 1; i < numero; i++)
+        {
+            appoggio = inizio + inizio2;
+            result = appoggio;
+
+            inizio = inizio2;
+            inizio2 = result;
+            appoggio = 0;
+        }
     }
+
 
     return result;
 }
