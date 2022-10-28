@@ -21,7 +21,7 @@ Stampare la somma di tutti i numeri elevati al quadrati
 */
 
 
-int[] array = { 2, 6, 7, 5, 3, 9 };
+
 
 
 
@@ -62,6 +62,21 @@ int SommaElementiArray(int[] array)
     }
     return somma;
 }
+
+//int[] array = { 2, 6, 7, 5, 3, 9 };
+
+Console.Write("Quanti numeri vuoi scrivere: ");
+int N = Convert.ToInt32(Console.ReadLine());
+
+int[] array = new int[N];
+
+for (int i = 0; i < N; i++)
+{
+    Console.Write("Inserisci numero: ");
+    array[i] = Convert.ToInt32(Console.ReadLine());
+}
+
+
 
 //stampa dell'array
 StampaArrayInteri(array);
