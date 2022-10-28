@@ -101,16 +101,27 @@
 
 
 //v1
+
+Console.Write("Calcola il fattoriale di un numero, inserisci il numero: ");
+int N = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine(Fattoriale(N));
+
+
 int Fattoriale(int numero)
 {
-    int iterazioni = numero;
-    int moltiplicazione = 0;
+    int result = 0;
+    int moltiplicazione = numero;
 
-    for (int i = iterazioni; i > 0; i--)
+    int iterazioni = numero;
+
+    for(int i = iterazioni; i > 1;)
     {
-        moltiplicazione += numero * iterazioni;
+        i--;
+        moltiplicazione = moltiplicazione * i;
+        result = moltiplicazione;
     }
-    return moltiplicazione;
+
+    return result;
 }
 
-Console.WriteLine(Fattoriale(5));
