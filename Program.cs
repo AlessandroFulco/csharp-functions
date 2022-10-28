@@ -21,3 +21,18 @@ Stampare la somma di tutti i numeri elevati al quadrati
 */
 
 
+int[] arrNum = { 2, 6, 7, 5, 3, 9 };
+
+
+
+void StampaArrayInteri(int[] arrNum)
+{
+    Console.Write("[");
+    for (int i = 0; i < arrNum.Length; i++)
+    {
+        Console.Write(arrNum[i] + ", ");
+    }
+    Console.Write("]");
+}
+
+StampaArrayInteri(arrNum);
