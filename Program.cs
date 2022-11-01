@@ -125,45 +125,137 @@
 //    return result;
 //}
 
+//// Calcola la sequenza di fibonacci
+////v1
+
+//Console.WriteLine(Fibonacci(10));
+
+//int Fibonacci(int numero)
+//{
+//    int result = 0;
+
+//    int somma1 = 0;
+//    int somma2 = 0;
+
+//    if (numero == 0)
+//    {
+//        Console.WriteLine(0);
+//    } 
+//    else if( numero == 1 ) 
+//    {
+//        Console.WriteLine(1);
+//    } else
+//    {
+//        int appoggio = 0;
+//        int inizio = 0;
+//        int inizio2 = 1;
+//        for (int i = 1; i < numero; i++)
+//        {
+//            appoggio = inizio + inizio2;
+//            result = appoggio;
+
+//            inizio = inizio2;
+//            inizio2 = result;
+//            appoggio = 0;
+//        }
+//    }
 
 
+//    return result;
+//}
 
-// Calcola la sequenza di fibonacci
-//v1
+/*
+    Realizzare un programma in grado di CRIPTARE e DECRIPTARE una stringa inserita nell’utente con la strategia di criptazione nota come “IL CIFRARIO DI CESARE”
+    Mi raccomando ci sono diversi modi di integrarlo, scegliete una strategia semplice in base a quello che abbiamo spiegato:
+    l’utente inserisce una stringa da criptare / decriptare
+    l’utente inserisce una chiave numerica per effettuare la criptazione / decriptazione della stringa inserita
+*/
 
-Console.WriteLine(Fibonacci(10));
-
-int Fibonacci(int numero)
+string CifrarioDiCesare(string stringa, int chiave)
 {
-    int result = 0;
+    string result = "";
 
-    int somma1 = 0;
-    int somma2 = 0;
-   
-    if (numero == 0)
+    //dicharazioni array
+    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
+    char[] stringaInArray = stringa.ToCharArray();
+
+    //ciclo per iterare ogni lettera contenuta nell'array
+    for(int i = 0; i < stringaInArray.Length; i++)
     {
-        Console.WriteLine(0);
-    } 
-    else if( numero == 1 ) 
-    {
-        Console.WriteLine(1);
-    } else
-    {
-        int appoggio = 0;
-        int inizio = 0;
-        int inizio2 = 1;
-        for (int i = 1; i < numero; i++)
+        // ad ogni ciclo iterariamo l'array dell'alfabeto, se la lettera iterata è uguale a quella della stringa blocchiamo il ciclo
+        int j = 0;
+        for(; j < alfabeto.Length; j++)                         
         {
-            appoggio = inizio + inizio2;
-            result = appoggio;
-
-            inizio = inizio2;
-            inizio2 = result;
-            appoggio = 0;
+            if (stringaInArray[i] == alfabeto[j])
+            {
+                break;
+            }
+        }
+        // controllare se la posizione delle lettere eccedono l'indice massimo dell'array alfabeto 
+        if(j + chiave > alfabeto.Length - 1)
+        {
+            result += alfabeto[j + chiave - alfabeto.Length];
+        }
+        else
+        {
+            result += alfabeto[j + chiave]; 
         }
     }
 
 
     return result;
 }
+
+string DecifrarioDiCesare(string stringa, int chiave)
+{
+    string result = "";
+
+    //dicharazioni array
+    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
+    char[] stringaInArray = stringa.ToCharArray();
+
+    //ciclo per iterare ogni lettera contenuta nell'array
+    for (int i = 0; i < stringaInArray.Length; i++)
+    {
+        // ad ogni ciclo iterariamo l'array dell'alfabeto, se la lettera iterata è uguale a quella della stringa blocchiamo il ciclo
+        int j = 0;
+        for (; j < alfabeto.Length; j++)
+        {
+            if (stringaInArray[i] == alfabeto[j])
+            {
+                break;
+            }
+        }
+        // controllare se la posizione delle lettere eccedono l'indice massimo dell'array alfabeto 
+        if (j + chiave < 0)
+        {
+            result += alfabeto[j - chiave + alfabeto.Length];
+        }
+        else
+        {
+            result += alfabeto[j - chiave];
+        }
+    }
+
+    return result;
+}
+
+// cifrario di cesare
+Console.Write("Inserire la frase da cifrare: ");
+string stringa = Console.ReadLine();
+
+Console.Write("Inserire la chiave di cifratura: ");
+int chiave = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("La frase cifrata è: " + CifrarioDiCesare(stringa, chiave));
+
+// decifrario di cesare
+Console.Write("Inserire la frase da decifrare: ");
+stringa = Console.ReadLine();
+
+Console.Write("Inserire la chiave di decifratura: ");
+chiave = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("La frase cifrata è: " + DecifrarioDiCesare(stringa, chiave));
+
 
